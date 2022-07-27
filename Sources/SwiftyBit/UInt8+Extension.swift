@@ -2,15 +2,15 @@ import Foundation
 
 public extension UInt8 {
     
-    public var data: Data {
+    var data: Data {
         Data([self])
     }
     
-    public var uint: UInt {
+    var uint: UInt {
         UInt(self)
     }
     
-    public func to1bitUInt8(range: ClosedRange<Int>) -> UInt8? {
+    func to1bitUInt8(range: ClosedRange<Int>) -> UInt8? {
         guard let binary = Int(String(self, radix: 2)) else {
             return nil
         }
@@ -25,7 +25,7 @@ public extension UInt8 {
         return UInt8(result)
     }
     
-    public func to1bitUInt8(range: Range<Int>) -> UInt8? {
+    func to1bitUInt8(range: Range<Int>) -> UInt8? {
         guard let binary = Int(String(self, radix: 2)) else {
             return nil
         }
