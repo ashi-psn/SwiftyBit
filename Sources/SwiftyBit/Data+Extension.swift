@@ -68,4 +68,24 @@ public extension Data {
         
         print()
     }
+    
+    @discardableResult
+    mutating func removeByteFromFirst(to endIndex: Int) -> Data {
+        
+        var removedByte: [UInt8] = []
+        
+        if self.count == 0 {
+            print()
+        }
+        
+        for _ in 0..<endIndex {
+            removedByte.append(self.removeFirst())
+        }
+        
+        let removedData: Data = Data(
+            bytes: removedByte,
+            count: removedByte.count)
+        
+        return removedData
+    }
 }

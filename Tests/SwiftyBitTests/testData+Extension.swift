@@ -82,4 +82,22 @@ class testData_Extension: XCTestCase {
         
         XCTAssertEqual(value, expectString)
     }
+    
+    func testRemoveByteFromFirst() {
+        var expectByte: [UInt8] = [
+            0x00,
+            0x01,
+            0x02,
+            0x03,
+            0x04,
+            0x05,
+            0x06
+        ]
+        var testData = expectByte.data
+        testData.removeByteFromFirst(to: 1)
+        
+        expectByte.removeFirst()
+        
+        XCTAssertEqual(testData, expectByte.data)
+    }
 }
