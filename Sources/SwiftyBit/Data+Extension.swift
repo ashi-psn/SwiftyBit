@@ -2,6 +2,16 @@ import Foundation
 
 public extension Data {
     
+    var reversedBytes: [UInt8] {
+        var values = [UInt8](repeating: 0, count: count)
+        copyBytes(to: &values, count: count)
+        return values.reversed()
+    }
+
+    var reversedData: Data {
+        return Data(bytes: reversedBytes, count: count)
+    }
+    
     var bytes: [UInt8] {
         [UInt8](self)
     }
@@ -35,5 +45,27 @@ public extension Data {
             return [UInt8](UnsafeBufferPointer(start: unsafePointer, count: self.count))
         })
         return responseValues
+    }
+    
+    func outputHex() {
+        let hex = self.map{
+            String(format: "%02x", $0)
+        }
+        
+        for i in 1...hex.count {
+            
+            let value = hex[i-1]
+            
+            if i % 16 == 0 {
+                print("\(value) ", terminator: "")
+                print()
+            } else if i % 8 == 0 {
+                print("\(value)   ", terminator: "")
+            } else {
+                print("\(value) ", terminator: "")
+            }
+        }
+        
+        print()
     }
 }

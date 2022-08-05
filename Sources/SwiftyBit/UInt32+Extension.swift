@@ -1,8 +1,8 @@
-//
-//  File.swift
-//  
-//
-//  Created by 葦沢尚也 on 2022/08/05.
-//
-
 import Foundation
+
+public extension UInt32 {
+    var data: Data {
+        var int = self
+        return Data(bytes: &int, count: MemoryLayout<UInt32>.size).reversedData
+    }
+}
